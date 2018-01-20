@@ -7,12 +7,17 @@ Contact person: Jian Tang, tangjianpku@gmail.com. This work is done when the aut
 Both C++ source codes and Python wrapper are provided on Linux, OS X and Windows. To install the package, external packages are required, including [GSL (GNU Scientific Library)](http://www.gnu.org/software/gsl/) on Linux and OS X or [BOOST](http://www.boost.org/) on Windows for generating random numbers.
 
 ####Linux
+Install gsl using yum:
+```
+sudo yum -y install gsl gsl-devel
+```
+
 Compile the source files via:
 ```
 g++ LargeVis.cpp main.cpp -o LargeVis -lm -pthread -lgsl -lgslcblas -Ofast -march=native -ffast-math
 ```
 
-To install the Python wrapper, modify ```setup.py``` to make sure that the GSL path is correctly set and then run ```sudo python setup.py install```.
+To install the Python wrapper, modify ```setup.py``` to make sure that the GSL path is correctly set and then run ```sudo python setup.py install```. Only python2.x has been supported now and make sure python-devel installed in advance. If not yet, run ```sudo yum -y install python-devel```.
 
 ####OS X
 Install gsl using [Homebrew](http://brew.sh/):
@@ -87,6 +92,8 @@ For example, to visualize the MNIST dataset,
 python LargeVis_run.py -input mnist_vec784D.txt -output mnist_vec2D.txt -threads 16
 python plot.py -input mnist_vec2D.txt -label mnist_label.txt -output mnist_vec2D_plot
 ```
+
+Configure matplotlib in ```.config/matplotlib/matplotlibrc``` with ```backend : Agg```.
 
 ![plot of mnist](Examples/MNIST/mnist_plot.png)
 
