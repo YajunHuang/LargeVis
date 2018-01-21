@@ -519,6 +519,7 @@ protected:
     }
 
     vector<S> nns;
+    // WARNING: This loop could raise segment fault using multiple threads for some datasets.
     while (nns.size() < search_k && !q.empty()) {
       const pair<T, S>& top = q.top();
       T d = top.first;

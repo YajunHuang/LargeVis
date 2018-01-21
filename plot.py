@@ -36,7 +36,9 @@ for color, ll in zip(colors, sorted(all_data.keys())):
     y = [t[1] for t in all_data[ll]]
     ll_dots = plt.plot(x, y, '.', color = color, label = ll, markersize = 1)
     ll_color_handles.append(ll_dots)
-plt.legend(bbox_to_anchor=(0., 1.02, 1., .102), loc=3, ncol=6, mode="expand", borderaxespad=0.)
+
+if args.label != '':
+    plt.legend(bbox_to_anchor=(0., 1.02, 1., .102), loc=3, ncol=6, mode="expand", borderaxespad=0.)
 
 if args.range != '':
     l = abs(float(args.range))
